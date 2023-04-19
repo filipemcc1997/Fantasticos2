@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using StayCationCoPilot.Core.Interfaces.Repositories;
 using StayCationCoPilot.Core.Models;
 
@@ -53,7 +52,7 @@ namespace StayCationCoPilot.Services.Controllers
         }
         //Add the following code to the ReserveHotel(Reserve reserveHotel) method:
         [HttpPost]
-        [Route("reserve")]
+        [Route("hotels/reserve")]
         public IActionResult ReserveHotel([FromBody] Reserve reserveHotel)
         {
             try
@@ -69,7 +68,7 @@ namespace StayCationCoPilot.Services.Controllers
 
         //Add the following code to the PaymentHotel(int hotelId) method:
         [HttpPost]
-        [Route("payment")]
+        [Route("hotels/payment")]
         public IActionResult PaymentHotel([FromBody] Payment payment)
         {
             try
