@@ -69,14 +69,12 @@ namespace StayCationCoPilot.Services.Controllers
         //Add the following code to the PaymentHotel(int hotelId) method:
         [HttpPost]
         [Route("payment")]
-        public IActionResult PaymentHotel([FromBody] string body)
+        public IActionResult PaymentHotel([FromBody] Payment payment)
         {
             try
             {
-                // transform body to reserve object
-                var reserve = JsonConvert.DeserializeObject<Reserve>(body);
                 // call repository method
-                _hackathonRepository.PaymentHotel(reserve);
+                _hackathonRepository.PaymentHotel(payment);
                 return Ok();
                 //return Ok(reserve);
             }
