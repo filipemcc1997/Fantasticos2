@@ -17,6 +17,7 @@ configurationBuilder.SetBasePath(Environment.CurrentDirectory)
  .AddEnvironmentVariables()
  .AddUserSecrets(Assembly.GetExecutingAssembly(), true);
 var config = configurationBuilder.Build();
+
 builder.Configuration.AddConfiguration(config);
 
 builder.Services.AddControllers();
