@@ -49,11 +49,11 @@ namespace Hackathon2.Services.Controllers
         }
 
         [HttpPost(Name = "AddCart")]
-        public async Task<IActionResult> AddCart([FromBody] AddCartRequest body)
+        public async Task<IActionResult> AddCart([FromBody] Cart body)
         {
             try
             {
-                var products = await _hackathonRepository.GetProductsAsync();
+                var products = await _hackathonRepository.AddCartAsync(body);
 
                 return null;
             }
