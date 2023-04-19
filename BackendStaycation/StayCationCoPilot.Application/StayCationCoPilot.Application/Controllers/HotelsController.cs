@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using StayCationCoPilot.Core.Interfaces.Repositories;
 using StayCationCoPilot.Core.Models;
 
@@ -67,13 +68,17 @@ namespace StayCationCoPilot.Services.Controllers
 
         //Add the following code to the PaymentHotel(int hotelId) method:
         [HttpPost]
-        [Route("payment/{hotelId}")]
-        public IActionResult PaymentHotel(int hotelId)
+        [Route("payment")]
+        public IActionResult PaymentHotel([FromBody] string body)
         {
             try
             {
-                _hackathonRepository.PaymentHotel(hotelId);
+                // transform body to reserve object
+                var reserve = JsonConvert.DeserializeObject<Reserve>(body);
+                // call repository method
+                _hackathonRepository.PaymentHotel(reserve);
                 return Ok();
+                //return Ok(reserve);
             }
             catch (Exception ex)
             {

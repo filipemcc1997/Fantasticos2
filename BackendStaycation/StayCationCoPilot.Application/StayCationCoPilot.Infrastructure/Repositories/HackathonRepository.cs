@@ -80,13 +80,15 @@ namespace StayCationCoPilot.Infrastructure.Repositories
 
         }
 
-        public async Task<bool> PaymentHotel(int hotelId)
+        public async Task<bool> PaymentHotel(Reserve reserveHotel)
         {
             try
             {
                 await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
                 await connection.OpenAsync();
-                var query = @"INSERT INTO tblReserve (HotelId, UserId, NumberOfNights, DateCheckIn, DateCheckOut, DateReserve, NumberOfPeople) VALUES (@hotelId, @userId, @numberOfNights, @dateCheckIn, @dateCheckOut, @dateReserve, @numberOfPeople)";
+                var query = @"UPDATE tblReserve 
+                                SET BookingStatus = @reserveHotel.BookingStatus, BookingPaymentType = @reserveHotel.BookingPaymentType
+                                WHERE BookingId = @reserveHotel.BookingId";
 
                 var affectedRows = connection.Execute(query);
 

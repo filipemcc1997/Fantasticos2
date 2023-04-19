@@ -9,7 +9,7 @@ namespace StayCationCoPilot.Core.Interfaces.Repositories
         Task<List<Hotel>> GetHotels();
         Task<Hotel> GetHotelById(int id);
         Task<bool> ReserveHotel(Reserve reserveHotel);
-        Task<bool> PaymentHotel(int hotelId);
+        Task<bool> PaymentHotel(Reserve reserveHotel);
         Task<User> Login(int userId, string password);
     }
 }
