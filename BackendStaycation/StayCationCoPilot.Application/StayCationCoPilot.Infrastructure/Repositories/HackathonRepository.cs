@@ -82,16 +82,13 @@ namespace StayCationCoPilot.Infrastructure.Repositories
 
         public async Task<bool> PaymentHotel(Payment payment)
         {
+            //update tblReserve setting BookingPaymentStatus and BookingPaymentType to Paid and Credit Card where BookingId = payment.Boo            //protect string against sql injectionkingId
             try
             {
                 await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
                 await connection.OpenAsync();
-                var query = $@"UPDATE tblReserve 
-                                SET BookingPaymentStatus = '{payment.BookingPaymentStatus}', BookingPaymentType = '{payment.BookingPaymentType}'
-                                WHERE BookingId = '{payment.BookingId}'";
-
+                var query = @"UPDATE tblReserve SET BookingPaymentStatus = @bookingPaymentStatus, BookingPaymentType = @bookingPaymentType WHERE BookingId = @bookingId";
                 var affectedRows = connection.Execute(query, payment);
-
                 if (affectedRows > 0)
                     return true;
             }
