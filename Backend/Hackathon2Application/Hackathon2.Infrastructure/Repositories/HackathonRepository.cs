@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hackathon2.Core.Interfaces.Repositories;
+using Hackathon2.Core.Models;
 
 namespace Hackathon2.Infrastructure.Repositories
 {
-    internal class HackathonRepository
+    public class HackathonRepository : IHackathonRepository
     {
+        List<Product> IHackathonRepository.GetProducts()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

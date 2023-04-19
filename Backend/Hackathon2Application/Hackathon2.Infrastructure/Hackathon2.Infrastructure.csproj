@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Hackathon2.Core\Hackathon2.Core.csproj" />
+    <ProjectReference Include="..\Hackathon2Application\Hackathon2Application.csproj" />
+  </ItemGroup>
+
 </Project>

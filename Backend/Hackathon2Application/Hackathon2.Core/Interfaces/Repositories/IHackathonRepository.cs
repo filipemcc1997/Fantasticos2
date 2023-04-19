@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hackathon2.Core.Models;
 
 namespace Hackathon2.Core.Interfaces.Repositories
 {
-    internal interface IHackathonRepository
+    public interface IHackathonRepository
     {
+        List<Product> GetProducts();
     }
 }
