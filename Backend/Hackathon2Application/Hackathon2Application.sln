@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon2.Core", "Hackatho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon2.Infrastructure", "Hackathon2.Infrastructure\Hackathon2.Infrastructure.csproj", "{D5BD9A32-4F73-4883-A345-F8BB27F128B6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hackathon2.Services", "Hackathon2.Services\Hackathon2.Services.csproj", "{333D0534-A7AC-42E9-9418-9D6B781FDDA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,10 +23,10 @@ Global
 		{D5BD9A32-4F73-4883-A345-F8BB27F128B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5BD9A32-4F73-4883-A345-F8BB27F128B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5BD9A32-4F73-4883-A345-F8BB27F128B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7916F399-3FF4-4DE1-92E6-1B4E02A35C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7916F399-3FF4-4DE1-92E6-1B4E02A35C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7916F399-3FF4-4DE1-92E6-1B4E02A35C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7916F399-3FF4-4DE1-92E6-1B4E02A35C16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{333D0534-A7AC-42E9-9418-9D6B781FDDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333D0534-A7AC-42E9-9418-9D6B781FDDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333D0534-A7AC-42E9-9418-9D6B781FDDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333D0534-A7AC-42E9-9418-9D6B781FDDA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,6 +18,11 @@ namespace Hackathon2.Infrastructure.Repositories
             _repositorySettings = repositoryOptions.Value;
         }
 
+        public Task<bool> AddCartAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<Product>> GetProductsAsync()
         {
 
