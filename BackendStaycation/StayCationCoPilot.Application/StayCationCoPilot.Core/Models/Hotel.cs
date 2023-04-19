@@ -3,6 +3,7 @@
     public class Hotel
     {
         //Create properties for HotelId, Name, Address, City, State, Zip, Country, Phone, Email, Website, Description, Amenities, ImageUrl, Rating, Price, and IsAvailable        public int HotelId { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
