@@ -1,7 +1,9 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Dapper;
+using Microsoft.Extensions.Options;
 using StayCationCoPilot.Core.Interfaces.Repositories;
 using StayCationCoPilot.Core.Models;
 using StayCationCoPilot.Core.Settings;
+using System.Data.SqlClient;
 
 namespace StayCationCoPilot.Infrastructure.Repositories
 {
@@ -16,19 +18,65 @@ namespace StayCationCoPilot.Infrastructure.Repositories
         }
         //implement the methods from the interface here
 
-        public Hotel GetHotelById(int id)
+        public async Task<Hotel> GetHotels()
         {
-            //use entityFramework to connect to _repositorySettings.ConnectionString   
-            throw new System.NotImplementedException();
+            try
+            {
+                await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
+                await connection.OpenAsync();
+
+                var query = @"SELECT * FROM tblHotels";
+
+                var result = connection.Query<Hotel>(query).ToList();
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return null;
         }
-        public Hotel GetHotels()
+
+        public async Task<Hotel> GetHotelById(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
+                await connection.OpenAsync();
+                var query = @"SELECT * FROM tblHotels WHERE HotelId = @id";
+                var result = connection.Query<Hotel>(query);
+
+                if (result != null)
+                    return (Hotel)result;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return null;
+
         }
-        public void Login(int userId, string password)
+
+        public async Task<User> Login(int userId, string password)
         {
-            throw new System.NotImplementedException();
+            //create login method here with columns username and password protect string against sql injection
+            try
+            {
+                await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
+                await connection.OpenAsync();
+                var query = @"SELECT * FROM tblUsers WHERE UserName = @userId AND Password = @password";
+                var result = connection.Query<User>(query);
+                if (result != null)
+                    return (User)result;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return null;
+
         }
+
         public void PaymentHotel(int hotelId)
         {
             throw new System.NotImplementedException();
