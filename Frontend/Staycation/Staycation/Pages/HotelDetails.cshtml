@@ -1,0 +1,23 @@
+﻿@page "/hotel/{id}"
+@model Staycation.Pages.HotelDetailsModel
+@{
+    var hoteldetails = ViewData["hoteldetails"] as Staycation.Models.Hotel;
+    ViewData["Title"] = @hoteldetails.Name;
+}
+
+<div class="text-center">
+    <h1 class="display-4">@hoteldetails.Name</h1>
+</div>
+<div>
+    <img src="@hoteldetails.Image" alt="@hoteldetails.Name" />
+</div>
+<div>
+<p>@hoteldetails.Description</p>
+</div>
+<div>
+<p>@hoteldetails.Price</p>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to Hotel List</a>
+</div>

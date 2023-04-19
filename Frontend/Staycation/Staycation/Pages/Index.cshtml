@@ -1,4 +1,5 @@
 ﻿@page
+@using Staycation.Models;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -7,4 +8,44 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="hotel-list">
+    <div class="grid-container">
+        @if (ViewData["Hotels"] != null)
+        {
+            var hotels = ViewData["Hotels"] as List<Hotel>;
+            foreach(var hotel in hotels)
+            {
+              
+                <div class="item2">                   
+                    <div class="hotel-image">
+                        <img src="@hotel.Image" alt="@hotel.Name" />
+                    </div>
+                    <div class="hotel-titel">
+                        @hotel.Name
+                    </div>
+                    
+                    <div class="hotel-description">
+                        @hotel.Description 
+                    </div>
+
+                    <div class="hotel-price">
+                        @hotel.Price 
+                     </div>
+
+                     <a asp-page="./HotelDetails" asp-route-id="@hotel.Id">Book now</a>
+                  
+
+                    @*<a asp-page-handler="OnPostBookNow" asp-route-id="@hotel.Id">Book now</a>*@
+
+                    @*<button type="submit" formaction="/PdpHotel?id=@hotel.Id" class="btn btn-info">
+                        Book now</button>*@
+                    
+
+                </div>
+            }
+        }
+        
+    <div>
 </div>
