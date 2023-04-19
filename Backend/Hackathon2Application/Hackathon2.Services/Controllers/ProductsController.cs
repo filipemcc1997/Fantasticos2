@@ -1,4 +1,6 @@
 using Hackathon2.Core.Interfaces.Repositories;
+using Hackathon2.Infrastructure.Repositories;
+using Hackathon2.Services.Data.Contracts;
 using Hackathon2.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,6 +34,21 @@ namespace Hackathon2.Services.Controllers
 
 
             return new List<Product>();
+        }
+
+        [HttpPost(Name = "AddCart")]
+        public async Task<IActionResult> AddCart([FromBody] AddCartRequest body)
+        {
+            try
+            {
+                var products = await _hackathonRepository.GetProductsAsync();
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

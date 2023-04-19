@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon2.Core", "Hackatho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon2.Infrastructure", "Hackathon2.Infrastructure\Hackathon2.Infrastructure.csproj", "{D5BD9A32-4F73-4883-A345-F8BB27F128B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackathon2.Services", "Hackathon2.Services\Hackathon2.Services.csproj", "{7916F399-3FF4-4DE1-92E6-1B4E02A35C16}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
