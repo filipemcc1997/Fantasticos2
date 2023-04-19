@@ -22,6 +22,7 @@ namespace StayCationCoPilot.Services.Controllers
 
         //Create GetHotels(), GetHotelById(int id), ReserveHotel(int hotelId), PaymentHotel(int hotelId) and Login(int userId, string password) methods here        //Add the following code to the GetHotels() method:
         [HttpGet]
+        [Route("hotels")]
         public async Task<IActionResult> GetHotels()
         {
             try
@@ -36,7 +37,7 @@ namespace StayCationCoPilot.Services.Controllers
         }
         //Add the following code to the GetHotelById(int id) method:
         [HttpGet]
-        [Route("{id}")]
+        [Route("hotels/{id}")]
         public async Task<IActionResult> GetHotelById(int id)
         {
             try
