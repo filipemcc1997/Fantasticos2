@@ -79,10 +79,13 @@ namespace StayCationCoPilot.Infrastructure.Repositories
 
         public void PaymentHotel(int hotelId)
         {
-            throw new System.NotImplementedException();
+            //create PaymentHotel method here
+
         }
         public void ReserveHotel(int hotelId)
         {
+            //create ReserveHotel method here
+
             throw new System.NotImplementedException();
         }
     }

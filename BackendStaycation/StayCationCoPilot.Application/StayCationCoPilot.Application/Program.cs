@@ -1,6 +1,15 @@
+using StayCationCoPilot.Core.Interfaces.Repositories;
+using StayCationCoPilot.Core.Settings;
+using StayCationCoPilot.Infrastructure.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
+string hackathonRepository = "HackathonRepository";
 
 // Add services to the container.
+
+builder.Services.AddSingleton<IHackathonRepository, HackathonRepository>();
+builder.Services.Configure<RepositorySettings>(builder.Configuration.GetSection(hackathonRepository));
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
