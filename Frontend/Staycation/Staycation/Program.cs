@@ -1,10 +1,7 @@
-using HetkoFrontEnd.Gateways;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddHttpClient<APIGateway>();
 
 var app = builder.Build();
 

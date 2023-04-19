@@ -18,9 +18,23 @@ namespace Hackathon2.Infrastructure.Repositories
             _repositorySettings = repositoryOptions.Value;
         }
 
-        public Task<bool> AddCartAsync()
+        public async Task<bool> AddCartAsync(Cart cart)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
+                await connection.OpenAsync();
+
+                var query = @$"INSERT INTO tblCart VALUES ('{cart.username}', {cart.SKU})";
+
+                var result = connection.Query(query);
+
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
         }
 
         public async Task<List<Product>> GetProductsAsync()
