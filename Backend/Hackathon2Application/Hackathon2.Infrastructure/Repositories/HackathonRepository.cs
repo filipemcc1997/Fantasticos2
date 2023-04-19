@@ -42,5 +42,25 @@ namespace Hackathon2.Infrastructure.Repositories
 
             return null;
         }
+
+        public async Task<Product> GetProductAsync(int SKU)
+        {
+            try
+            {
+                await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
+                await connection.OpenAsync();
+
+                var query = $"SELECT * FROM tblProducts WHERE SKU = {SKU}";
+
+                var result = connection.QuerySingle<Product>(query);
+                return result;
+
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return null;
+        }
     }
 }
