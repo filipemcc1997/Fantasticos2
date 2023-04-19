@@ -5,5 +5,6 @@ namespace Hackathon2.Core.Interfaces.Repositories
     public interface IHackathonRepository
     {
         Task<List<Product>> GetProductsAsync();
+        Task<bool> AddCartAsync();
     }
 }
