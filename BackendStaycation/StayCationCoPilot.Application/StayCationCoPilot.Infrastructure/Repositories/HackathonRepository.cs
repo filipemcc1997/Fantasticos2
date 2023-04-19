@@ -18,7 +18,7 @@ namespace StayCationCoPilot.Infrastructure.Repositories
         }
         //implement the methods from the interface here
 
-        public async Task<Hotel> GetHotels()
+        public async Task<List<Hotel>> GetHotels()
         {
             try
             {
@@ -28,6 +28,9 @@ namespace StayCationCoPilot.Infrastructure.Repositories
                 var query = @"SELECT * FROM tblHotels";
 
                 var result = connection.Query<Hotel>(query).ToList();
+
+                if (result != null || result.Count > 0)
+                    return result;
             }
             catch (SqlException ex)
             {
@@ -77,16 +80,41 @@ namespace StayCationCoPilot.Infrastructure.Repositories
 
         }
 
-        public void PaymentHotel(int hotelId)
+        public async Task<bool> PaymentHotel(int hotelId)
         {
-            //create PaymentHotel method here
+            try
+            {
+                await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
+                await connection.OpenAsync();
+                var query = @"INSERT INTO tblReserve (HotelId, UserId, NumberOfNights, DateCheckIn, DateCheckOut, DateReserve, NumberOfPeople) VALUES (@hotelId, @userId, @numberOfNights, @dateCheckIn, @dateCheckOut, @dateReserve, @numberOfPeople)";
 
+                var affectedRows = connection.Execute(query);
+
+                if (affectedRows > 0)
+                    return true;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return false;
         }
-        public void ReserveHotel(int hotelId)
+        public async Task<bool> ReserveHotel(Reserve reserveHotel)
         {
-            //create ReserveHotel method here
-
-            throw new System.NotImplementedException();
+            try
+            {
+                await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
+                await connection.OpenAsync();
+                var query = @"INSERT INTO tblReserve (HotelName, HotelAddress, HotelImage, HotelPrice, HotelRating, HotelDescription, HotelId, UserId, BookingId, BookingDate, BookingStatus, BookingTotal, BookingTotalNights, BookingGuests, BookingRooms, BookingPaymentType, BookingPaymentStatus) VALUES (@hotelName, @hotelAddress, @hotelImage, @hotelPrice, @hotelRating, @hotelDescription, @hotelId, @userId, @bookingId, @bookingDate, @bookingStatus, @bookingTotal, @bookingTotalNights, @bookingGuests, @bookingRooms, @bookingPaymentType, @bookingPaymentStatus)";
+                var affectedRows = connection.Execute(query, reserveHotel);
+                if (affectedRows > 0)
+                    return true;
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return false;
         }
     }
 }

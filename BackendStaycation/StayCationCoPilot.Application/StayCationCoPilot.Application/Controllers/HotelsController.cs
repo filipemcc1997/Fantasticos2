@@ -49,14 +49,14 @@ namespace StayCationCoPilot.Services.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        //Add the following code to the ReserveHotel(int hotelId) method:
+        //Add the following code to the ReserveHotel(Reserve reserveHotel) method:
         [HttpPost]
-        [Route("reserve/{hotelId}")]
-        public IActionResult ReserveHotel(int hotelId)
+        [Route("reserve")]
+        public IActionResult ReserveHotel([FromBody] Reserve reserveHotel)
         {
             try
             {
-                _hackathonRepository.ReserveHotel(hotelId);
+                _hackathonRepository.ReserveHotel(reserveHotel);
                 return Ok();
             }
             catch (Exception ex)
@@ -64,6 +64,7 @@ namespace StayCationCoPilot.Services.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
         //Add the following code to the PaymentHotel(int hotelId) method:
         [HttpPost]
         [Route("payment/{hotelId}")]

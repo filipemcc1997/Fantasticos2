@@ -6,10 +6,10 @@ namespace StayCationCoPilot.Core.Interfaces.Repositories
     {
         //Create repository interface methods here with the following signature: GetHotels(), GetHotelById(int id), ReserveHotel(int hotelId), PaymentHotel(int hotelId) and Login(nt userId, string password)
 
-        Task<Hotel> GetHotels();
+        Task<List<Hotel>> GetHotels();
         Task<Hotel> GetHotelById(int id);
-        void ReserveHotel(int hotelId);
-        void PaymentHotel(int hotelId);
+        Task<bool> ReserveHotel(Reserve reserveHotel);
+        Task<bool> PaymentHotel(int hotelId);
         Task<User> Login(int userId, string password);
     }
 }
