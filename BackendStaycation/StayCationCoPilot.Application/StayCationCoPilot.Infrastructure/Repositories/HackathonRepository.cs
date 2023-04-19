@@ -46,8 +46,8 @@ namespace StayCationCoPilot.Infrastructure.Repositories
             {
                 await using var connection = new SqlConnection(_repositorySettings.ConnectionString);
                 await connection.OpenAsync();
-                var query = @"SELECT * FROM tblHotels WHERE HotelId = @id";
-                var result = connection.Query<Hotel>(query);
+                var query = $"SELECT * FROM tblHotels WHERE id = {id}";
+                var result = connection.QueryFirst<Hotel>(query);
 
                 if (result != null)
                     return (Hotel)result;
