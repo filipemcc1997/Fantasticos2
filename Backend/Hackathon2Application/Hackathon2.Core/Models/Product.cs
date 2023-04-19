@@ -2,23 +2,25 @@
 {
     public class Product
     {
-        string Description { get; set; }
+        public string description { get; set; }
 
-        int Sku { get; set; }
+        public int SKU { get; set; }
 
-        string Brand { get; set; }
+        public string DisplayName { get; set; }
+        public string brand { get; set; }
 
-        string Category { get; set; }
+        public string category { get; set; }
 
-        float MaxPrice { get; set; }
+        public decimal MaxPrice { get; set; }
 
-        int Upc { get; set; }
+        public int Upc { get; set; }
 
-        int VatCode { get; set; }
+        public int VatCode { get; set; }
 
-        float SecondaryUnitPrice { get; set; }
+        public decimal secondaryUnitPrice { get; set; }
 
-        string SecondaryUnit { get; set; }
-        string ImageUrl { get; set; }
+        public string SecondaryUnit { get; set; }
+
+        public string urlImagem { get; set; }
     }
 }

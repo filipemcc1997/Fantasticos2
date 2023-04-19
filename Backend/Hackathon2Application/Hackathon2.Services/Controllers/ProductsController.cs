@@ -1,5 +1,5 @@
 using Hackathon2.Core.Interfaces.Repositories;
-using Hackathon2.Infrastructure.Repositories;
+using Hackathon2.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hackathon2.Services.Controllers
@@ -18,7 +18,7 @@ namespace Hackathon2.Services.Controllers
 
         public ProductsController(
             ILogger<ProductsController> logger,
-            HackathonRepository hackathonRepository
+            IHackathonRepository hackathonRepository
             )
         {
             _logger = logger;
@@ -26,17 +26,12 @@ namespace Hackathon2.Services.Controllers
         }
 
         [HttpGet(Name = "GetProducts")]
-        public async Task<IEnumerable<WeatherForecast>> GetProductsAsync()
+        public async Task<List<Product>> GetProductsAsync()
         {
             var products = await _hackathonRepository.GetProductsAsync();
 
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+
+            return new List<Product>();
         }
     }
 }

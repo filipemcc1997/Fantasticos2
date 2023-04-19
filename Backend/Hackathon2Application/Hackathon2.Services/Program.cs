@@ -20,14 +20,15 @@ var config = configurationBuilder.Build();
 
 builder.Configuration.AddConfiguration(config);
 
+builder.Services.Configure<RepositorySettings>(builder.Configuration.GetSection(hackathonRepository));
+
+builder.Services.AddSingleton<IHackathonRepository, HackathonRepository>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<RepositorySettings>(builder.Configuration.GetSection(hackathonRepository));
-
-builder.Services.AddSingleton<IHackathonRepository, HackathonRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

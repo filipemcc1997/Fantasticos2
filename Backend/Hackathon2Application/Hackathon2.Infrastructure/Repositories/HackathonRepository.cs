@@ -28,7 +28,7 @@ namespace Hackathon2.Infrastructure.Repositories
 
                 var query = @"SELECT * FROM tblProducts";
 
-                var result = connection.QueryFirstOrDefault<dynamic>(query);
+                var result = connection.Query<List<Product>>(query);
 
             }
             catch (SqlException ex)
