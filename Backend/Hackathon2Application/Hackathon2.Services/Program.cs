@@ -1,7 +1,6 @@
 using Hackathon2.Core.Interfaces.Repositories;
 using Hackathon2.Core.Settings;
 using Hackathon2.Infrastructure.Repositories;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +12,7 @@ var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT
 ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
 configurationBuilder.SetBasePath(Environment.CurrentDirectory)
  .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
- .AddJsonFile($"appsettings.{environmentName}.json", optional: true, reloadOnChange: true)
- .AddEnvironmentVariables()
- .AddUserSecrets(Assembly.GetExecutingAssembly(), true);
+ .AddEnvironmentVariables();
 var config = configurationBuilder.Build();
 
 builder.Configuration.AddConfiguration(config);
