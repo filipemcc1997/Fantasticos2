@@ -28,12 +28,10 @@ namespace Hackathon2.Infrastructure.Repositories
 
                 var query = @"SELECT * FROM tblProducts";
 
-                var result = connection.Query<List<Product>>(query);
-
+                var result = connection.Query<Product>(query).ToList();
             }
             catch (SqlException ex)
             {
-                //_logger.LogError(string.Format(ErrorMessages.UpdateInWorkProcess, workerProcessId, ex.Message));
                 throw;
             }
 

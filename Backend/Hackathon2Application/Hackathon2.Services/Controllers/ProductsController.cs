@@ -30,6 +30,8 @@ namespace Hackathon2.Services.Controllers
         {
             var products = await _hackathonRepository.GetProductsAsync();
 
+            if (products != null || products.Count > 0)
+                return products;
 
             return new List<Product>();
         }
